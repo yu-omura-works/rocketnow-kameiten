@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Rocket Now | 加盟店申請専用サイト</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Montserrat:wght@700;900&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    img, video, svg { max-width: 100%; height: auto; display: block; }
+
+    :root {
+      --flame: #FF5722;
+      --flame-light: #FF7043;
+      --flame-deep: #E64A19;
+      --gold: #FFA726;
+      --gold-light: #FFD54F;
+      --dark: #1A1A1A;
+      --mid: #3D3D3D;
+      --soft: #F5F0EB;
+      --white: #FFFFFF;
+      --red-accent: #D84315;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      overflow-x: hidden;
+      width: 100%;
+      position: relative;
+    }
+
+    /* ── HEADER ── */
+    html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; position: relative; }
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10000;
+      background: #ffffff;
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid var(--flame);
+      box-shadow: 0 2px 12px rgba(255,87,34,0.08);
+    }
+    .header-top {
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.2rem;
+      color: var(--flame);
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .logo-icon { font-size: 1.4rem; }
+    .logo-sub {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 700;
+      color: var(--flame-deep);
+      background: #fff3e0;
+      border: 1px solid #ffcc80;
+      border-radius: 4px;
+      padding: 2px 6px;
+      margin-left: 4px;
+      white-space: nowrap;
+      letter-spacing: 0.3px;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header-cta {
+      background: var(--flame);
+      color: var(--white);
+      border: none;
+      border-radius: 50px;
+      padding: 8px 14px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s cubic-bezier(0.34,1.56,0.64,1);
+      outline: none;
+    }
+    .header-cta:hover { background: var(--flame-deep); transform: scale(1.06); }
+    .header-cta:active { transform: scale(0.97); }
+    .hamburger {
+      background: none;
+      border: 2px solid var(--flame);
+      border-radius: 8px;
+      width: 36px; height: 36px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 6px;
+      flex-shrink: 0;
+    }
+    .hamburger span {
+      display: block;
+      width: 18px; height: 2px;
+      background: var(--flame);
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.2s;
+    }
+    .hamburger.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* ── NAV ── */
+    .nav-bar {
+      background: white;
+      border-top: 1px solid #f0e8e0;
+      padding: 0 20px;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .nav-bar.open { max-height: 60px; overflow-x: auto; }
+    .nav-bar::-webkit-scrollbar { display: none; }
+    .nav-link {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--mid);
+      text-decoration: none;
+      padding: 12px 12px;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      display: block;
+      cursor: pointer;
+    }
+    .nav-link:hover { color: var(--flame); border-bottom-color: var(--flame); }
+    @media (max-width: 767px) {
+      .header-cta { display: none; }
+      .logo { font-size: 1rem; }
+      .logo-sub { font-size: 0.52rem; padding: 2px 4px; }
+      .logo-icon { font-size: 1.1rem; }
+    }
+    @media (min-width: 768px) {
+      .header-top { padding: 12px 40px; }
+      .hamburger { display: none; }
+      .nav-bar { max-height: none !important; overflow: visible; padding: 0 40px; display: flex; }
+      .nav-link { font-size: 0.82rem; padding: 10px 16px; }
+    }
+    @media (min-width: 1024px) {
+      .header-top { padding: 12px max(40px, calc((100vw - 1100px)/2)); }
+      .nav-bar { padding: 0 max(40px, calc((100vw - 1100px)/2)); }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 140px 20px 100px;
+      overflow: hidden;
+      background: linear-gradient(145deg, #fff8f5 0%, #fff3e0 50%, #ffe0b2 100%);
+    }
+    .hero-bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,87,34,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-bg-circle-1 { width: 500px; height: 500px; top: -150px; right: -180px; max-width: none; }
+    .hero-bg-circle-2 { width: 300px; height: 300px; bottom: -80px; left: -100px; max-width: none; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(90deg, var(--flame), var(--gold));
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+      width: fit-content;
+      animation: fadeSlideDown 0.7s ease both;
+    }
+    .hero-headline {
+      font-size: clamp(1.75rem, 5.5vw, 3rem);
+      font-weight: 900;
+      line-height: 1.3;
+      color: var(--dark);
+      margin-bottom: 20px;
+      animation: fadeSlideDown 0.8s 0.1s ease both;
+      text-shadow: 0 1px 4px rgba(255,255,255,0.7);
+    }
+    .hero-headline span {
+      color: var(--flame);
+      position: relative;
+      display: inline;
+    }
+    .hero-headline span::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--flame), var(--gold));
+      border-radius: 2px;
+    }
+    .hero-sub {
+      font-size: clamp(0.88rem, 3vw, 1.1rem);
+      line-height: 1.8;
+      color: var(--mid);
+      margin-bottom: 36px;
+      max-width: 540px;
+      animation: fadeSlideDown 0.8s 0.2s ease both;
+    }
+    .hero-cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      animation: fadeSlideDown 0.8s 0.3s ease both;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--flame), var(--red-accent));
+      color: white;
+      border: none;
+      border-radius: 14px;
+      padding: 18px 28px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(255,87,34,0.4);
+      transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.15s;
+      letter-spacing: 0.3px;
+      outline: none;
+    }
+    .btn-primary:hover { transform: scale(1.06); box-shadow: 0 12px 32px rgba(255,87,34,0.55); }
+    .btn-primary:active { transform: scale(0.97); box-shadow: 0 4px 12px rgba(255,87,34,0.3); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: transparent;
+      color: var(--flame);
+      border: 2px solid var(--flame);
+      border-radius: 14px;
+      padding: 16px 28px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, transform 0.15s cubic-bezier(0.34,1.56,0.64,1);
+      outline: none;
+    }
+    .btn-secondary:hover { background: var(--flame); color: white; transform: scale(1.06); }
+    .btn-secondary:active { transform: scale(0.97); }
+
+    /* ── HERO STATS ── */
+    .hero-stats {
+      display: flex;
+      gap: 28px;
+      margin-top: 44px;
+      animation: fadeSlideDown 0.8s 0.4s ease both;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--flame);
+      line-height: 1;
+    }
+    .stat-label { font-size: 0.7rem; color: var(--mid); margin-top: 4px; white-space: nowrap; }
+    .stat-divider { width: 1px; background: rgba(0,0,0,0.12); align-self: stretch; }
+    .hero-rocket {
+      position: absolute;
+      right: 16px; bottom: 20px;
+      font-size: 5rem;
+      opacity: 0.12;
+      animation: float 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 72px 20px; width: 100%; box-sizing: border-box; overflow-x: hidden; }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--flame);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 900;
+      line-height: 1.35;
+      margin-bottom: 14px;
+      color: var(--dark);
+    }
+    .section-title em { font-style: normal; color: var(--flame); }
+    .section-desc {
+      font-size: 0.92rem;
+      color: var(--mid);
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    /* ── REASONS ── */
+    .reasons { background: var(--soft); }
+    .reason-cards { display: flex; flex-direction: column; gap: 20px; margin-top: 40px; }
+    .reason-card {
+      background: white;
+      border-radius: 20px;
+      padding: 28px 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      border-left: 5px solid var(--flame);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .reason-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.11); }
+    .reason-card::before {
+      content: '';
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,87,34,0.08) 0%, transparent 70%);
+    }
+    .reason-img-wrap {
+      position: relative;
+      width: calc(100% + 48px);
+      margin: -28px -24px 20px;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #f0ebe6;
+    }
+    .reason-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .reason-card:hover .reason-img-wrap img { transform: scale(1.05); }
+    .reason-img-badge {
+      position: absolute; top: 12px; left: 12px;
+      background: linear-gradient(135deg, var(--flame), var(--red-accent));
+      color: white; font-family: 'Montserrat', sans-serif;
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 2px;
+      padding: 4px 10px; border-radius: 50px;
+      box-shadow: 0 2px 8px rgba(255,87,34,0.4);
+    }
+    .reason-number {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--flame);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .reason-icon { font-size: 2.4rem; margin-bottom: 10px; display: block; }
+    .reason-title { font-size: 1.05rem; font-weight: 900; color: var(--dark); margin-bottom: 10px; line-height: 1.45; }
+    .reason-body { font-size: 0.88rem; color: var(--mid); line-height: 1.7; }
+
+    /* ── BENEFITS / VOICES ── */
+    .benefits { background: linear-gradient(135deg, var(--flame) 0%, var(--red-accent) 100%); }
+    .benefits .section-label { color: rgba(255,255,255,0.7); }
+    .benefits .section-title { color: white; }
+    .benefits .section-desc { color: rgba(255,255,255,0.82); }
+    .voice-cards { display: flex; flex-direction: column; gap: 20px; }
+    .voice-card {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      padding: 28px 24px;
+      color: white;
+    }
+    .voice-quote {
+      font-size: 2.5rem;
+      line-height: 0.5;
+      color: rgba(255,255,255,0.3);
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 10px;
+    }
+    .voice-text { font-size: 1.05rem; font-weight: 700; line-height: 1.6; margin-bottom: 14px; }
+    .voice-highlight {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--gold-light);
+    }
+    .voice-author { font-size: 0.78rem; color: rgba(255,255,255,0.65); margin-top: 12px; }
+    .voice-stars { color: var(--gold-light); font-size: 0.85rem; margin-bottom: 6px; }
+
+    /* ── STEPS ── */
+    .steps-wrap { display: flex; flex-direction: column; gap: 0; margin-top: 40px; }
+    .step { display: flex; gap: 20px; align-items: flex-start; padding-bottom: 36px; }
+    .step:last-child { padding-bottom: 0; }
+    .step-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+    .step-dot {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--flame), var(--gold));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem; font-weight: 900; color: white;
+      box-shadow: 0 4px 16px rgba(255,87,34,0.4);
+      flex-shrink: 0;
+    }
+    .step-line {
+      width: 2px; flex: 1;
+      background: linear-gradient(to bottom, var(--flame), var(--gold));
+      margin-top: 8px; min-height: 40px; opacity: 0.3;
+    }
+    .step:last-child .step-line { display: none; }
+    .step-content { padding-top: 10px; }
+    .step-label { font-size: 0.68rem; font-weight: 700; color: var(--flame); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; }
+    .step-title { font-size: 1.1rem; font-weight: 900; color: var(--dark); margin-bottom: 6px; }
+    .step-desc { font-size: 0.86rem; color: var(--mid); line-height: 1.65; }
+    .step-icon { font-size: 1.4rem; margin-bottom: 4px; }
+
+    /* ── FAQ ── */
+    .faq { background: var(--soft); }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 40px; }
+    .faq-item { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .faq-q {
+      width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 20px 20px; background: none; border: none; cursor: pointer;
+      font-family: 'Noto Sans JP', sans-serif; font-size: 0.92rem; font-weight: 700;
+      color: var(--dark); text-align: left;
+    }
+    .faq-icon {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--flame), var(--gold));
+      color: white; display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0; transition: transform 0.25s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s;
+      font-size: 0.88rem; color: var(--mid); line-height: 1.75;
+      padding: 0 20px;
+    }
+    .faq-item.open .faq-a { max-height: 300px; padding: 0 20px 20px; }
+
+    /* ── CTA FORM ── */
+    .cta-form-section {
+      background: linear-gradient(160deg, #fff8f5 0%, #ffede5 100%);
+      border-top: 3px solid var(--flame);
+    }
+    .form-card {
+      background: white; border-radius: 24px; padding: 32px 24px;
+      box-shadow: 0 8px 48px rgba(255,87,34,0.12); margin-top: 36px;
+    }
+    .form-group { margin-bottom: 18px; }
+    .form-label { display: block; font-size: 0.8rem; font-weight: 700; color: var(--mid); margin-bottom: 6px; letter-spacing: 0.3px; }
+    .form-label span {
+      background: var(--flame); color: white;
+      font-size: 0.65rem; padding: 1px 6px; border-radius: 4px;
+      margin-left: 6px; vertical-align: middle;
+    }
+    .form-input {
+      width: 100%; border: 2px solid #ebebeb; border-radius: 12px;
+      padding: 14px 16px; font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.95rem; color: var(--dark); outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s; background: #fafafa;
+    }
+    .form-input:focus { border-color: var(--flame); box-shadow: 0 0 0 3px rgba(255,87,34,0.12); background: white; }
+    .form-input::placeholder { color: #bbb; }
+    .form-note { font-size: 0.75rem; color: #999; margin-top: 14px; line-height: 1.6; text-align: center; }
+    .success-box { text-align: center; padding: 40px 24px; }
+    .success-icon { font-size: 3.5rem; margin-bottom: 16px; display: block; }
+    .success-title { font-size: 1.3rem; font-weight: 900; color: var(--dark); margin-bottom: 8px; }
+    .success-text { font-size: 0.9rem; color: var(--mid); line-height: 1.7; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--dark); color: rgba(255,255,255,0.5);
+      padding: 40px 20px; text-align: center; font-size: 0.78rem; line-height: 1.9;
+    }
+    .footer-logo { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 900; color: var(--flame); margin-bottom: 12px; display: block; }
+    .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 16px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.75rem; }
+    .footer-links a:hover { color: var(--flame); }
+
+    /* ── FLOATING CTA ── */
+    .floating-cta {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(135deg, var(--flame), var(--red-accent));
+      padding: 14px 20px; z-index: 99;
+      box-shadow: 0 -4px 24px rgba(255,87,34,0.35);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; box-sizing: border-box;
+    }
+    .floating-cta-text { color: white; font-size: 0.88rem; font-weight: 700; white-space: nowrap; }
+    .floating-cta a {
+      background: white; color: var(--flame); border-radius: 50px;
+      padding: 10px 20px; font-size: 0.82rem; font-weight: 700;
+      text-decoration: none; white-space: nowrap;
+      width: 90%; max-width: 400px; text-align: center;
+      transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1);
+      outline: none;
+    }
+    .floating-cta a:hover { transform: scale(1.06); }
+    .floating-cta a:active { transform: scale(0.97); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-10deg); }
+      50%       { transform: translateY(-18px) rotate(-10deg); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (min-width: 640px) {
+      .hero-cta-group { flex-direction: row; }
+      .reason-cards { flex-direction: row; }
+      .reason-card { flex: 1; }
+      .voice-cards { flex-direction: row; }
+      .voice-card { flex: 1; }
+    }
+    @media (min-width: 768px) {
+      section { padding: 100px 40px; }
+      .header { padding: 14px 40px; }
+      .hero { padding: 120px 40px 100px; }
+      .hero-rocket { font-size: 10rem; right: 60px; bottom: 60px; opacity: 0.08; }
+      .floating-cta { display: none; }
+    }
+    @media (min-width: 1024px) {
+      section { padding: 120px max(40px, calc((100vw - 1100px)/2)); }
+      .hero { padding: 140px max(40px, calc((100vw - 1100px)/2)) 120px; }
+    }
+
+    /* ── OVERFLOW LOCK (最終強制) ── */
+    html, body {
+      overflow-x: hidden !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      -webkit-overflow-scrolling: touch;
+    }
+    * { box-sizing: border-box !important; }
+    div, section, header, footer {
+      max-width: 100% !important;
+      overflow-x: hidden !important;
+      box-sizing: border-box !important;
+    }
+    img, button, a { max-width: 100% !important; }
+    img { height: auto !important; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-top">
+      <a href="#" class="logo">
+        <span class="logo-icon">🚀</span>
+        Rocket Now
+        <span class="logo-sub">加盟店申請専用サイト</span>
+      </a>
+      <div class="header-right">
+        <a href="#contact" class="header-cta">無料で資料請求</a>
+        <button class="hamburger" id="hamburger" aria-label="メニュー">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="nav-bar" id="nav-bar">
+      <a class="nav-link" href="#reasons">選ばれる理由</a>
+      <a class="nav-link" href="#voices">導入事例</a>
+      <a class="nav-link" href="#steps">導入の流れ</a>
+      <a class="nav-link" href="#faq">よくある質問</a>
+      <a class="nav-link" href="#contact">お問い合わせ</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-circle hero-bg-circle-1"></div>
+    <div class="hero-bg-circle hero-bg-circle-2"></div>
+    <div class="hero-badge" style="display:block;width:fit-content;margin:20px auto 10px;white-space:nowrap;">🛡️ 配達員の安全確保を最優先に取り組んでいます</div>
+    <h1 class="hero-headline">
+      <span>Rocket Now</span> で、<br>
+      あなたのお店の味を<br>
+      街中に届ける。
+    </h1>
+    <p class="hero-sub">
+      <strong style="color:#e65100;font-size:clamp(1.2rem,4vw,1.5rem);line-height:1.4;display:block;margin-top:20px;margin-bottom:20px;">初期費用<span style="font-size:1.2em;color:#d32f2f;">0円</span>・月額費用<span style="font-size:1.2em;color:#d32f2f;">0円</span>・解約費用<span style="font-size:1.2em;color:#d32f2f;">0円</span>。</strong>
+      最短1週間でデリバリー開始。<br>
+      地域密着型の配送ネットワークで<br>
+      リピーターを増やしませんか？
+    </p>
+    <div class="hero-cta-group">
+      <a href="#contact" class="btn-primary" style="border-radius:24px;box-shadow:0 10px 32px rgba(255,87,34,0.5),0 2px 8px rgba(0,0,0,0.12);">📋 無料で資料請求・お問い合わせ</a>
+      <a href="#reasons" class="btn-secondary">詳しく見る →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">0円</div>
+        <div class="stat-label">初期費用・月額費用</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">1週間</div>
+        <div class="stat-label">最短で開店</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">加盟店舗数</div>
+      </div>
+    </div>
+    <div class="hero-rocket">🚀</div>
+  </section>
+
+  <!-- REASONS -->
+  <section id="reasons" class="reasons">
+    <div class="section-label">WHY ROCKET NOW</div>
+    <h2 class="section-title">
+      Rocket Nowが選ばれる<br><em>3つの理由</em>
+    </h2>
+    <p class="section-desc">
+      飲食店オーナーの「もっと稼ぎたい」を実現するために、<br>
+      Rocket Nowは3つの強みで徹底サポートします。
+    </p>
+    <div class="reason-cards">
+      <div class="reason-card">
+        <div class="reason-img-wrap">
+          <img src="images/reason01.jpg" alt="配達員数・ハイブリッド体制イメージ" />
+          <span class="reason-img-badge">REASON 01</span>
+        </div>
+        <div class="reason-number">REASON 01</div>
+        <span class="reason-icon">🛵</span>
+        <div class="reason-title">圧倒的な「配達員数」で<br><span style="color:var(--flame)">機会損失ゼロ</span>へ</div>
+        <div class="reason-body">
+          Rocket Nowは、独自の時給制アルバイトと高単価契約のフリーランスを組み合わせたハイブリッド体制。他社が不足しがちな雨の日やピークタイムでも、確実にお客様へお料理を届けます。
+        </div>
+      </div>
+      <div class="reason-card">
+        <div class="reason-img-wrap">
+          <img src="images/reason02.jpg" alt="初期費用0円・業界最安級イメージ" />
+          <span class="reason-img-badge">REASON 02</span>
+        </div>
+        <div class="reason-number">REASON 02</div>
+        <span class="reason-icon">💰</span>
+        <div class="reason-title">
+          初期・月額・解約<br>ぜんぶ<span style="color:var(--flame)">「0円」</span>！<br>業界最安級のコストでスタート
+        </div>
+        <div class="reason-body">
+          初期費用、月額固定費、解約違約金もすべて<strong>「0円」</strong>。手数料は売上のわずか<strong>「30%」</strong>で、大手他社と比較しても手元にしっかり利益が残ります。受注用の専用タブレットも<strong>完全無料</strong>でレンタル。完全リスクゼロで始められます。
+        </div>
+      </div>
+      <div class="reason-card">
+        <div class="reason-img-wrap">
+          <img src="images/reason03.jpg" alt="最短1週間で開店イメージ" />
+          <span class="reason-img-badge">REASON 03</span>
+        </div>
+        <div class="reason-number">REASON 03</div>
+        <span class="reason-icon">🚀</span>
+        <div class="reason-title">最短<span style="color:var(--flame)">1週間</span>で開店</div>
+        <div class="reason-body">
+          お申込みからメニュー登録・端末設定まで、専任スタッフが全てサポート。面倒な手続きは一切なく、最短1週間でデリバリーをスタートできます。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOICES -->
+  <section id="voices" class="benefits">
+    <div class="section-label">STORE VOICES</div>
+    <h2 class="section-title">導入した飲食店オーナーの声</h2>
+    <p class="section-desc">
+      実際に Rocket Now を導入したオーナー様からのリアルな声をご紹介します。
+    </p>
+    <div class="voice-cards">
+      <div class="voice-card">
+        <div class="voice-stars">★★★★★</div>
+        <div class="voice-quote">"</div>
+        <div class="voice-text">
+          アイドルタイムを有効活用することで、月の売上が<br>
+          <span class="voice-highlight">120% アップ！</span><br>
+          ランチ後の空き時間が稼ぎ時になりました。
+        </div>
+        <div class="voice-author">🍜 名古屋市 中区 / ラーメン店オーナー（43歳）</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-stars">★★★★★</div>
+        <div class="voice-quote">"</div>
+        <div class="voice-text">
+          専門のライダーが料理を<br>
+          <span class="voice-highlight">丁寧に運んでくれる</span><br>
+          から安心。料理の質が届いた後も落ちない！
+        </div>
+        <div class="voice-author">🍱 名古屋市 千種区 / 弁当・惣菜店オーナー（36歳）</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <section id="steps">
+    <div class="section-label">HOW TO START</div>
+    <h2 class="section-title">導入までの<em>3ステップ</em></h2>
+    <p class="section-desc">
+      面倒な手続きはすべて担当者がサポート。<br>
+      最短1週間でデリバリーを開始できます。
+    </p>
+    <div class="steps-wrap">
+      <div class="step">
+        <div class="step-left">
+          <div class="step-dot">1</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-label">STEP 01</div>
+          <div class="step-icon">🌐</div>
+          <div class="step-title">Webからのお申込み</div>
+          <div class="step-desc">
+            このページ下部のフォームに必要事項を入力するだけ。24時間以内に担当者からご連絡します。完全無料・しつこい営業は一切なし。
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left">
+          <div class="step-dot">2</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-label">STEP 02</div>
+          <div class="step-icon">📋</div>
+          <div class="step-title">メニュー登録・端末設定</div>
+          <div class="step-desc">
+            専任スタッフがメニューの登録をサポート。無料貸出の専用タブレットをお届けし、その場で設定まで完了します。
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left">
+          <div class="step-dot">3</div>
+          <div class="step-line"></div>
+        </div>
+        <div class="step-content">
+          <div class="step-label">STEP 03</div>
+          <div class="step-icon">🚀</div>
+          <div class="step-title">掲載完了・開店！</div>
+          <div class="step-desc">
+            設定完了後、アプリへの掲載が完了し、すぐにデリバリー受付がスタート。注文が入り始めたらいよいよ開店です！
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="faq">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">よくある質問</h2>
+    <p class="section-desc">
+      加盟をご検討中のオーナー様からよくいただく質問をまとめました。
+    </p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Q. 導入費用はかかりますか？</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">A. 初期費用・月額費用・解約費用はすべて0円です。注文が入った分だけの手数料制なので、固定コストは一切かかりません。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Q. タブレットの貸出はありますか？</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">A. はい、専用タブレット端末を完全無料でお貸しします。Wi-Fi環境があればすぐにご利用いただけます。設定サポートも無料です。また、CamelやOrdeeなどをお使いでしたら、連携も可能です。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Q. 導入までどのくらいかかりますか？</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">A. お申込みからメニュー登録・端末設定を経て、最短1週間でデリバリーを開始できます。担当者が全工程をサポートしますのでご安心ください。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Q. 手数料はどのくらいですか？</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">A. 手数料は30%です。初期費用・月額費用・解約費用はすべて無料のため、実質的なコストは注文が発生したときだけです。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          <span>Q. 配達員は確保できるの？</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-a">A. ご安心ください。Rocket Nowはフリーランスの配達員に加えて、時給制で働くアルバイトの配達員も在籍しています。また、フリーランスの配達員も他社と比べてRocket Nowの報酬が高いため、開始直後から特にRocket Nowの配達を優先してくれる傾向が強く、安定した配達体制を確保できます。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FORM -->
+  <section id="contact" class="cta-form-section">
+    <div class="section-label">CONTACT</div>
+    <h2 class="section-title">
+      まずはお気軽に<br><em>ご相談ください</em>
+    </h2>
+    <p class="section-desc">
+      資料請求・ご相談はすべて無料です。<br>
+      24時間以内に担当者からご連絡いたします。
+    </p>
+    <div class="form-card">
+      <form id="contact-form">
+        <div class="form-group">
+          <label class="form-label">店舗名 <span>必須</span></label>
+          <input class="form-input" type="text" placeholder="例：ラーメン大将 名古屋駅前店" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">担当者名 <span>必須</span></label>
+          <input class="form-input" type="text" placeholder="例：田中 太郎" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">電話番号 <span>必須</span></label>
+          <input class="form-input" type="tel" placeholder="例：052-XXX-XXXX" required />
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;margin-top:8px">
+          🚀 無料で資料請求・相談する
+        </button>
+        <p class="form-note">
+          ※ 個人情報は適切に管理し、第三者への提供は行いません。<br>
+          しつこい営業電話は一切行いません。
+        </p>
+      </form>
+      <div id="success-box" class="success-box" style="display:none">
+        <span class="success-icon">🎉</span>
+        <div class="success-title">お申込みありがとうございます！</div>
+        <div class="success-text">
+          24時間以内に担当者からご連絡いたします。<br>
+          しばらくお待ちください。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="footer-logo">🚀 Rocket Now</span>
+    <div class="footer-links">
+      <a href="#">利用規約</a>
+      <a href="#">プライバシーポリシー</a>
+      <a href="#">加盟店規約</a>
+      <a href="#">特定商取引法</a>
+      <a href="#">会社概要</a>
+    </div>
+    <p>© 2026 Rocket Now Inc. All rights reserved.</p>
+  </footer>
+
+  <!-- FLOATING CTA (mobile only) -->
+  <div class="floating-cta">
+    <span class="floating-cta-text">🚀 無料で始める</span>
+    <a href="#contact">今すぐ資料請求</a>
+  </div>
+
+  <script>
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const navBar = document.getElementById('nav-bar');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navBar.classList.toggle('open');
+    });
+    // Close nav on link click
+    navBar.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navBar.classList.remove('open');
+      });
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    // Form submit
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('success-box').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
