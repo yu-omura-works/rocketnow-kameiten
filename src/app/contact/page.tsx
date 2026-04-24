@@ -227,16 +227,6 @@ export default function ContactPage() {
         {/* INFO CARDS */}
         <div className="contact-info-cards">
           <div className="contact-info-card">
-            <span className="contact-info-icon">📞</span>
-            <div>
-              <div className="contact-info-title">電話でのお問い合わせ</div>
-              <div className="contact-info-text">
-                052-XXX-XXXX（仮）<br />
-                平日 10:00〜18:00
-              </div>
-            </div>
-          </div>
-          <div className="contact-info-card">
             <span className="contact-info-icon">✉️</span>
             <div>
               <div className="contact-info-title">メールでのお問い合わせ</div>
@@ -273,21 +263,7 @@ export default function ContactPage() {
                 お急ぎの方は以下からもご連絡いただけます。
               </div>
               <div className="success-actions">
-                <a href="tel:052-XXX-XXXX" className="success-action-btn success-action-tel">
-                  <span>📞</span>
-                  <div>
-                    <div className="success-action-label">電話で今すぐ相談</div>
-                    <div className="success-action-sub">052-XXX-XXXX（仮）　平日 10:00〜18:00</div>
-                  </div>
-                </a>
-                <a href="https://lin.ee/XXXXXXX" target="_blank" rel="noopener noreferrer" className="success-action-btn success-action-line">
-                  <span>💬</span>
-                  <div>
-                    <div className="success-action-label">LINEで相談・資料受け取り</div>
-                    <div className="success-action-sub">トーク画面からお気軽に</div>
-                  </div>
-                </a>
-                <a href="mailto:support@rocketnow-kameiten.com" className="success-action-btn success-action-mail">
+              <a href="mailto:support@rocketnow-kameiten.com" className="success-action-btn success-action-mail">
                   <span>✉️</span>
                   <div>
                     <div className="success-action-label">メールで資料を受け取る</div>
