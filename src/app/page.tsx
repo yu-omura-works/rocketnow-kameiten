@@ -10,6 +10,9 @@ export default function RocketNowLP() {
     storeName: "",
     contactName: "",
     phone: "",
+    email: "",
+    category: "",
+    message: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -989,6 +992,48 @@ export default function RocketNowLP() {
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   required
+                />
+              </div>
+              <div className="form-group">
+                <label className="form-label">
+                  メールアドレス <span style={{background:'#ddd',color:'#888',fontSize:'0.62rem',padding:'1px 6px',borderRadius:'4px',marginLeft:'6px'}}>任意</span>
+                </label>
+                <input
+                  className="form-input"
+                  type="email"
+                  placeholder="例：info@restaurant.jp"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                />
+              </div>
+              <div className="form-group">
+                <label className="form-label">
+                  お問い合わせ種別 <span>必須</span>
+                </label>
+                <select
+                  className="form-input"
+                  value={formData.category}
+                  onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                  required
+                >
+                  <option value="">選択してください</option>
+                  <option>加盟のご相談・資料請求</option>
+                  <option>手数料・料金について</option>
+                  <option>タブレット・端末について</option>
+                  <option>対応エリアについて</option>
+                  <option>その他</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label className="form-label">
+                  お問い合わせ内容 <span style={{background:'#ddd',color:'#888',fontSize:'0.62rem',padding:'1px 6px',borderRadius:'4px',marginLeft:'6px'}}>任意</span>
+                </label>
+                <textarea
+                  className="form-input"
+                  placeholder="ご質問・ご要望などをご自由にお書きください"
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  style={{minHeight:'100px',resize:'vertical'}}
                 />
               </div>
               <button
