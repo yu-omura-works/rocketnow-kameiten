@@ -66,7 +66,7 @@ export default function RocketNowLP() {
   return (
     <>
       <style precedence="default" href="rocket-now-global">{`
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Montserrat:wght@700;900&display=swap');
+        /* フォントはnext/font経由で読み込み */
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -84,7 +84,7 @@ export default function RocketNowLP() {
         }
 
         body {
-          font-family: 'Noto Sans JP', sans-serif;
+          font-family: var(--font-noto), sans-serif;
           color: var(--dark);
           background: var(--white);
           overflow-x: hidden;
@@ -109,7 +109,7 @@ export default function RocketNowLP() {
           gap: 12px;
         }
         .logo {
-          font-family: 'Montserrat', sans-serif;
+          font-family: var(--font-montserrat), sans-serif;
           font-weight: 900;
           font-size: 1.2rem;
           color: var(--flame);
@@ -122,7 +122,7 @@ export default function RocketNowLP() {
         }
         .logo-icon { font-size: 1.4rem; }
         .logo-sub {
-          font-family: 'Noto Sans JP', sans-serif;
+          font-family: var(--font-noto), sans-serif;
           font-size: 0.58rem;
           font-weight: 700;
           color: var(--flame-deep);
@@ -146,7 +146,7 @@ export default function RocketNowLP() {
           border: none;
           border-radius: 50px;
           padding: 8px 14px;
-          font-family: 'Noto Sans JP', sans-serif;
+          font-family: var(--font-noto), sans-serif;
           font-size: 0.7rem;
           font-weight: 700;
           cursor: pointer;
@@ -200,7 +200,7 @@ export default function RocketNowLP() {
         .nav-bar.open { max-height: 60px; overflow-x: auto; }
         .nav-bar::-webkit-scrollbar { display: none; }
         .nav-link {
-          font-family: 'Noto Sans JP', sans-serif;
+          font-family: var(--font-noto), sans-serif;
           font-size: 0.78rem;
           font-weight: 700;
           color: var(--mid);
@@ -327,7 +327,7 @@ export default function RocketNowLP() {
           border: none;
           border-radius: 14px;
           padding: 18px 28px;
-          font-family: 'Noto Sans JP', sans-serif;
+          font-family: var(--font-noto), sans-serif;
           font-size: 1rem;
           font-weight: 700;
           cursor: pointer;
@@ -352,7 +352,7 @@ export default function RocketNowLP() {
           border: 2px solid var(--flame);
           border-radius: 14px;
           padding: 16px 28px;
-          font-family: 'Noto Sans JP', sans-serif;
+          font-family: var(--font-noto), sans-serif;
           font-size: 0.92rem;
           font-weight: 700;
           cursor: pointer;
@@ -372,7 +372,7 @@ export default function RocketNowLP() {
         }
         .stat { text-align: center; }
         .stat-num {
-          font-family: 'Montserrat', sans-serif;
+          font-family: var(--font-montserrat), sans-serif;
           font-size: 1.6rem;
           font-weight: 900;
           color: var(--flame);
@@ -462,13 +462,13 @@ export default function RocketNowLP() {
         .reason-img-badge {
           position: absolute; top: 12px; left: 12px;
           background: linear-gradient(135deg, var(--flame), var(--red-accent));
-          color: white; font-family: 'Montserrat', sans-serif;
+          color: white; font-family: var(--font-montserrat), sans-serif;
           font-size: 0.62rem; font-weight: 700; letter-spacing: 2px;
           padding: 4px 10px; border-radius: 50px;
           box-shadow: 0 2px 8px rgba(255,87,34,0.4);
         }
         .reason-number {
-          font-family: 'Montserrat', sans-serif;
+          font-family: var(--font-montserrat), sans-serif;
           font-size: 0.65rem;
           font-weight: 700;
           color: var(--flame);
@@ -521,7 +521,7 @@ export default function RocketNowLP() {
           font-size: 3rem;
           line-height: 0.6;
           color: var(--flame);
-          font-family: 'Montserrat', sans-serif;
+          font-family: var(--font-montserrat), sans-serif;
           margin-bottom: 12px;
           opacity: 0.7;
         }
@@ -543,7 +543,7 @@ export default function RocketNowLP() {
           border-radius: 50%;
           background: linear-gradient(135deg, var(--flame), var(--gold));
           display: flex; align-items: center; justify-content: center;
-          font-family: 'Montserrat', sans-serif;
+          font-family: var(--font-montserrat), sans-serif;
           font-size: 1.2rem; font-weight: 900; color: white;
           box-shadow: 0 4px 16px rgba(255,87,34,0.4);
           flex-shrink: 0;
@@ -567,7 +567,7 @@ export default function RocketNowLP() {
         .faq-q {
           width: 100%; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
           padding: 20px 20px; background: none; border: none; cursor: pointer;
-          font-family: 'Noto Sans JP', sans-serif; font-size: 0.92rem; font-weight: 700;
+          font-family: var(--font-noto), sans-serif; font-size: 0.92rem; font-weight: 700;
           color: var(--dark); text-align: left;
         }
         .faq-icon {
@@ -603,7 +603,7 @@ export default function RocketNowLP() {
         }
         .form-input {
           width: 100%; border: 2px solid #ebebeb; border-radius: 12px;
-          padding: 14px 16px; font-family: 'Noto Sans JP', sans-serif;
+          padding: 14px 16px; font-family: var(--font-noto), sans-serif;
           font-size: 0.95rem; color: var(--dark); outline: none;
           transition: border-color 0.2s, box-shadow 0.2s; background: #fafafa;
         }
@@ -620,7 +620,7 @@ export default function RocketNowLP() {
           background: var(--dark); color: rgba(255,255,255,0.5);
           padding: 40px 20px; text-align: center; font-size: 0.78rem; line-height: 1.9;
         }
-        .footer-logo { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 900; color: var(--flame); margin-bottom: 12px; display: block; }
+        .footer-logo { font-family: var(--font-montserrat), sans-serif; font-size: 1.2rem; font-weight: 900; color: var(--flame); margin-bottom: 12px; display: block; }
         .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 16px; flex-wrap: wrap; }
         .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.75rem; }
         .footer-links a:hover { color: var(--flame); }
