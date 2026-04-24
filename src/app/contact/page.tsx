@@ -224,30 +224,6 @@ export default function ContactPage() {
       </div>
 
       <div className="contact-body">
-        {/* INFO CARDS */}
-        <div className="contact-info-cards">
-          <div className="contact-info-card">
-            <span className="contact-info-icon">✉️</span>
-            <div>
-              <div className="contact-info-title">メールでのお問い合わせ</div>
-              <div className="contact-info-text">
-                support@rocketnow-kameiten.com<br />
-                24時間受付
-              </div>
-            </div>
-          </div>
-          <div className="contact-info-card">
-            <span className="contact-info-icon">⏱️</span>
-            <div>
-              <div className="contact-info-title">返信目安</div>
-              <div className="contact-info-text">
-                お問い合わせから<br />
-                24時間以内にご連絡
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div className="contact-divider">
           <span>WEB FORM</span>
         </div>
