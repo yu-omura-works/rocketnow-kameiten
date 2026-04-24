@@ -755,7 +755,7 @@ export default function RocketNowLP() {
         <div className="reason-cards">
           <div className="reason-card" style={{padding: '0'}}>
             <div className="reason-img-wrap">
-              <img src="/images/reason01.jpg" alt="配達員数・ハイブリッド体制イメージ" style={{maxWidth:'100%',height:'auto',display:'block',marginLeft:'auto',marginRight:'auto'}} />
+              <img src="/images/reason01.webp" alt="配達員数・ハイブリッド体制イメージ" style={{maxWidth:'100%',height:'auto',display:'block',marginLeft:'auto',marginRight:'auto'}} />
               <span className="reason-img-badge">REASON 01</span>
             </div>
             <div style={{padding:'20px'}}>
@@ -785,7 +785,7 @@ export default function RocketNowLP() {
           </div>
           <div className="reason-card" style={{padding: '0'}}>
             <div className="reason-img-wrap">
-              <img src="/images/reason03.jpg" alt="最短1週間で開店イメージ" style={{maxWidth:'100%',height:'auto',display:'block',marginLeft:'auto',marginRight:'auto'}} />
+              <img src="/images/reason03.webp" alt="最短1週間で開店イメージ" style={{maxWidth:'100%',height:'auto',display:'block',marginLeft:'auto',marginRight:'auto'}} />
               <span className="reason-img-badge">REASON 03</span>
             </div>
             <div style={{padding:'20px'}}>
