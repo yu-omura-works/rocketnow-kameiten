@@ -769,7 +769,7 @@ export default function RocketNowLP() {
           </div>
           <div className="reason-card" style={{padding: '0'}}>
             <div className="reason-img-wrap">
-              <img src="/images/reason02.jpg" alt="初期費用0円・業界最安級イメージ" style={{maxWidth:'100%',height:'auto',display:'block',marginLeft:'auto',marginRight:'auto'}} />
+              <img src="/images/reason02.webp" alt="初期費用0円・業界最安級イメージ" style={{maxWidth:'100%',height:'auto',display:'block',marginLeft:'auto',marginRight:'auto'}} />
               <span className="reason-img-badge">REASON 02</span>
             </div>
             <div style={{padding:'20px'}}>
