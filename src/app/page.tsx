@@ -803,6 +803,67 @@ export default function RocketNowLP() {
         </div>
       </section>
 
+      {/* COMPARISON */}
+      <section id="comparison" style={{background:'white',padding:'64px 20px'}}>
+        <div style={{maxWidth:'900px',margin:'0 auto'}}>
+          <div className="section-label" style={{textAlign:'center'}}>COMPARISON</div>
+          <h2 className="section-title" style={{textAlign:'center'}}>他社サービスとの<span style={{color:'var(--flame)'}}>比較</span></h2>
+          <p className="section-desc" style={{textAlign:'center'}}>コストパフォーマンスとサポートの手厚さで選ばれています。</p>
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1.15fr 1fr',gap:'16px',marginTop:'40px'}}>
+            {/* A社 */}
+            <div style={{background:'#f9f6f2',borderRadius:'20px',padding:'28px 24px',boxShadow:'0 4px 24px rgba(0,0,0,0.06)'}}>
+              <div style={{fontSize:'1.1rem',fontWeight:'900',marginBottom:'20px',color:'var(--dark)'}}>A社</div>
+              {[
+                {label:'販売手数料',value:'35%〜'},
+                {label:'初期費用',value:'0円'},
+                {label:'写真撮影',value:'有料 / 自前'},
+                {label:'担当窓口',value:'Webのみ'},
+                {label:'システム連携',value:'対応'},
+              ].map((item,i) => (
+                <div key={i} style={{padding:'12px 0',borderBottom:i<4?'1px solid #e8e4e0':'none'}}>
+                  <div style={{fontSize:'0.72rem',color:'#aaa',marginBottom:'4px'}}>{item.label}</div>
+                  <div style={{fontSize:'0.9rem',fontWeight:'700',color:'var(--dark)'}}>{item.value}</div>
+                </div>
+              ))}
+            </div>
+            {/* Rocket Now */}
+            <div style={{background:'linear-gradient(145deg,#1a2a4a,#0f1e38)',borderRadius:'20px',padding:'28px 24px',boxShadow:'0 12px 48px rgba(255,87,34,0.25)',position:'relative'}}>
+              <div style={{position:'absolute',top:'-14px',left:'50%',transform:'translateX(-50%)',background:'var(--flame)',color:'white',fontSize:'0.75rem',fontWeight:'900',padding:'5px 18px',borderRadius:'50px',whiteSpace:'nowrap'}}>🚀 おすすめ</div>
+              <div style={{fontSize:'1.3rem',fontWeight:'900',marginBottom:'4px',color:'white'}}>Rocket Now</div>
+              <div style={{fontSize:'0.75rem',color:'rgba(255,255,255,0.5)',marginBottom:'20px'}}>利益重視のデリバリー</div>
+              {[
+                {label:'販売手数料',value:'30%',good:true},
+                {label:'初期費用',value:'0円',good:true},
+                {label:'写真撮影',value:'無料（プロ撮影）',good:true},
+                {label:'担当窓口',value:'専任担当あり',good:true},
+                {label:'システム連携',value:'対応',good:true},
+              ].map((item,i) => (
+                <div key={i} style={{padding:'12px 0',borderBottom:i<4?'1px solid rgba(255,255,255,0.1)':'none'}}>
+                  <div style={{fontSize:'0.72rem',color:'rgba(255,255,255,0.5)',marginBottom:'4px'}}>{item.label}</div>
+                  <div style={{fontSize:'0.9rem',fontWeight:'700',color:'var(--flame)'}}>{item.value}</div>
+                </div>
+              ))}
+            </div>
+            {/* B社 */}
+            <div style={{background:'#f9f6f2',borderRadius:'20px',padding:'28px 24px',boxShadow:'0 4px 24px rgba(0,0,0,0.06)'}}>
+              <div style={{fontSize:'1.1rem',fontWeight:'900',marginBottom:'20px',color:'var(--dark)'}}>B社</div>
+              {[
+                {label:'販売手数料',value:'40%〜'},
+                {label:'初期費用',value:'0円'},
+                {label:'写真撮影',value:'有料'},
+                {label:'担当窓口',value:'Webのみ'},
+                {label:'システム連携',value:'一部対応'},
+              ].map((item,i) => (
+                <div key={i} style={{padding:'12px 0',borderBottom:i<4?'1px solid #e8e4e0':'none'}}>
+                  <div style={{fontSize:'0.72rem',color:'#aaa',marginBottom:'4px'}}>{item.label}</div>
+                  <div style={{fontSize:'0.9rem',fontWeight:'700',color:'var(--dark)'}}>{item.value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* VOICES */}
       <section id="voices" className="benefits">
         <div className="section-label">STORE VOICES</div>
