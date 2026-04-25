@@ -15,6 +15,15 @@ export default function RocketNowLP() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const activeCodes = ['01','04','11','12','13','14','22','23','26','27','28','34','40'];
@@ -673,6 +682,22 @@ export default function RocketNowLP() {
         .floating-cta a:hover { transform: scale(1.06); }
         .floating-cta a:active { transform: scale(0.97); background: white; color: var(--flame); }
         .floating-cta a:focus { outline: none; background: white; color: var(--flame); }
+        /* ── SCROLL TOP ── */
+        .scroll-top-btn {
+          position: fixed; bottom: 80px; right: 20px; z-index: 98;
+          width: 48px; height: 48px; border-radius: 50%;
+          background: linear-gradient(135deg, var(--flame), var(--red-accent));
+          color: white; border: none; cursor: pointer;
+          display: flex; align-items: center; justify-content: center;
+          box-shadow: 0 4px 16px rgba(255,87,34,0.4);
+          font-size: 1.2rem;
+          transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s;
+          -webkit-tap-highlight-color: transparent;
+          opacity: 0; pointer-events: none;
+        }
+        .scroll-top-btn.visible { opacity: 1; pointer-events: auto; }
+        .scroll-top-btn:hover { transform: scale(1.1); }
+        .scroll-top-btn:active { transform: scale(0.95); }
 
         /* ── ANIMATIONS ── */
         @keyframes fadeSlideDown {
@@ -1205,6 +1230,13 @@ export default function RocketNowLP() {
         <p>© {new Date().getFullYear()} Rocket Now Inc. All rights reserved.</p>
 
       </footer>
+
+      {/* SCROLL TOP */}
+      <button
+        className={`scroll-top-btn${showScrollTop ? ' visible' : ''}`}
+        onClick={() => window.scrollTo({top:0,behavior:'smooth'})}
+        aria-label="トップへ戻る"
+      >🚀</button>
 
       {/* FLOATING CTA (mobile only) */}
       <div className="floating-cta">
