@@ -864,6 +864,60 @@ export default function RocketNowLP() {
         </div>
       </section>
 
+      {/* AREA */}
+      <section id="area" style={{background:'#f9f6f2',padding:'64px 20px'}}>
+        <div style={{maxWidth:'960px',margin:'0 auto'}}>
+          <div className="section-label" style={{textAlign:'center'}}>SERVICE AREA</div>
+          <h2 className="section-title" style={{textAlign:'center'}}>全国<span style={{color:'var(--flame)'}}>対応エリア</span></h2>
+          <p className="section-desc" style={{textAlign:'center'}}>全国14都道府県でサービス展開中（2026年4月現在）</p>
+          <div style={{textAlign:'center',marginBottom:'40px'}}>
+            <span style={{display:'inline-flex',alignItems:'center',gap:'6px',background:'var(--flame)',color:'white',fontSize:'0.78rem',fontWeight:'700',padding:'4px 14px',borderRadius:'50px'}}>🗾 14都道府県 展開中</span>
+          </div>
+          {/* 地図 */}
+          <div id="area-map" style={{width:'100%',maxWidth:'600px',margin:'0 auto 48px'}}></div>
+          {/* エリアリスト */}
+          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(260px,1fr))',gap:'16px'}}>
+            {[
+              {region:'北海道・東北', prefs:[
+                {name:'北海道',cities:'札幌市'},
+                {name:'宮城県',cities:'仙台市'},
+              ]},
+              {region:'関東', prefs:[
+                {name:'東京都',cities:'23区・八王子市・立川市・武蔵野市・三鷹市・府中市・調布市・町田市 ほか'},
+                {name:'神奈川県',cities:'横浜市・川崎市・相模原市・藤沢市・横須賀市・平塚市 ほか'},
+                {name:'埼玉県',cities:'さいたま市・川口市・川越市・所沢市・越谷市 ほか'},
+                {name:'千葉県',cities:'千葉市・船橋市・松戸市・市川市・柏市 ほか'},
+              ]},
+              {region:'中部', prefs:[
+                {name:'静岡県',cities:'静岡市・浜松市'},
+                {name:'愛知県',cities:'名古屋市'},
+              ]},
+              {region:'関西', prefs:[
+                {name:'京都府',cities:'京都市'},
+                {name:'大阪府',cities:'大阪市・堺市・東大阪市'},
+                {name:'兵庫県',cities:'神戸市・芦屋市・西宮市・尼崎市'},
+              ]},
+              {region:'中国・九州', prefs:[
+                {name:'広島県',cities:'広島市'},
+                {name:'福岡県',cities:'福岡市'},
+              ]},
+            ].flatMap(group => group.prefs.map((pref, i) => (
+              <div key={pref.name} style={{background:'white',borderRadius:'16px',padding:'20px',boxShadow:'0 2px 16px rgba(255,87,34,0.07)',border:'1px solid rgba(255,87,34,0.08)'}}>
+                <div style={{display:'flex',alignItems:'center',gap:'8px',marginBottom:'12px',paddingBottom:'10px',borderBottom:'1px solid #f0ebe4'}}>
+                  <div style={{width:'8px',height:'8px',borderRadius:'50%',background:'var(--flame)',flexShrink:0}}></div>
+                  <div style={{fontSize:'0.88rem',fontWeight:'900',color:'var(--dark)'}}>{pref.name}</div>
+                </div>
+                <div style={{fontSize:'0.73rem',color:'var(--mid)',lineHeight:'1.6'}}>{pref.cities}</div>
+              </div>
+            )))}
+          </div>
+          <p style={{fontSize:'0.72rem',color:'#bbb',marginTop:'32px',textAlign:'center',lineHeight:'1.8'}}>
+            ※ 各市区町村内でも一部未対応のエリアがあります。<br/>
+            ※ 対応エリアは随時拡大中です。エリア外の場合もお気軽にお問い合わせください。
+          </p>
+        </div>
+      </section>
+
       {/* VOICES */}
       <section id="voices" className="benefits">
         <div className="section-label">STORE VOICES</div>
