@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function RocketNowLP() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -15,6 +15,31 @@ export default function RocketNowLP() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    const activeCodes = ['01','04','11','12','13','14','22','23','26','27','28','34','40'];
+    const isMobile = window.innerWidth < 680;
+    fetch(isMobile ? '/images/map-mobile.svg' : '/images/map-full.svg')
+      .then(res => res.text())
+      .then(svg => {
+        const container = document.getElementById('area-map');
+        if (!container) return;
+        container.innerHTML = svg;
+        container.querySelectorAll('.prefecture').forEach((pref: any) => {
+          const code = pref.dataset.code?.padStart(2, '0');
+          if (activeCodes.includes(code)) {
+            pref.style.fill = '#FF5722';
+          } else {
+            pref.style.fill = '#e8e4e0';
+          }
+          pref.style.stroke = 'white';
+          pref.style.strokeWidth = '1.5';
+        });
+        const svg_el = container.querySelector('svg') as any;
+        if (svg_el) { svg_el.style.width = '100%'; svg_el.style.height = 'auto'; }
+      })
+      .catch(() => {});
+  }, []);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const scrollTo = (id: string) => {
