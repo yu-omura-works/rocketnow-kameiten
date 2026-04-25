@@ -690,7 +690,7 @@ export default function RocketNowLP() {
           color: white; border: none; cursor: pointer;
           display: flex; align-items: center; justify-content: center;
           box-shadow: 0 4px 16px rgba(255,87,34,0.4);
-          font-size: 1.2rem;
+          font-size: 1.2rem; transform-origin: center;
           transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s;
           -webkit-tap-highlight-color: transparent;
           opacity: 0; pointer-events: none;
@@ -1236,7 +1236,7 @@ export default function RocketNowLP() {
         className={`scroll-top-btn${showScrollTop ? ' visible' : ''}`}
         onClick={() => window.scrollTo({top:0,behavior:'smooth'})}
         aria-label="トップへ戻る"
-      >🚀</button>
+      ><span style={{display:'inline-block',transform:'rotate(-45deg)'}}>🚀</span></button>
 
       {/* FLOATING CTA (mobile only) */}
       <div className="floating-cta">
