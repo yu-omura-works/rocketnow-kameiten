@@ -856,7 +856,6 @@ export default function RocketNowLP() {
             <div style={{background:'linear-gradient(145deg,#1a2a4a,#0f1e38)',borderRadius:'20px',padding:'28px 24px',boxShadow:'0 12px 48px rgba(255,87,34,0.25)',position:'relative'}}>
               <div style={{position:'absolute',top:'-14px',left:'50%',transform:'translateX(-50%)',background:'var(--flame)',color:'white',fontSize:'0.75rem',fontWeight:'900',padding:'5px 18px',borderRadius:'50px',whiteSpace:'nowrap'}}>🚀 おすすめ</div>
               <div style={{fontSize:'1.3rem',fontWeight:'900',marginBottom:'4px',color:'white'}}>Rocket Now</div>
-              <div style={{fontSize:'0.75rem',color:'rgba(255,255,255,0.5)',marginBottom:'20px'}}>利益重視のデリバリー</div>
               {[
                 {label:'販売手数料',value:'30%',good:true},
                 {label:'初期費用',value:'0円',good:true},
