@@ -686,10 +686,10 @@ export default function RocketNowLP() {
         .scroll-top-btn {
           position: fixed; bottom: 80px; right: 20px; z-index: 98;
           width: 48px; height: 48px; border-radius: 50%;
-          background: linear-gradient(135deg, var(--flame), var(--red-accent));
+          background: linear-gradient(135deg, #1a2a4a, #0f1e38);
           color: white; border: none; cursor: pointer;
           display: flex; align-items: center; justify-content: center;
-          box-shadow: 0 4px 16px rgba(255,87,34,0.4);
+          box-shadow: 0 4px 16px rgba(0,0,0,0.3);
           font-size: 1.2rem; transform-origin: center;
           transition: transform 0.15s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s;
           -webkit-tap-highlight-color: transparent;
