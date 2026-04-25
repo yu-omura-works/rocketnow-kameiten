@@ -728,6 +728,7 @@ export default function RocketNowLP() {
         <nav className={`nav-bar${menuOpen ? " open" : ""}`}>
           <a className="nav-link" onClick={() => scrollTo("reasons")} href="#reasons">選ばれる理由</a>
           <a className="nav-link" onClick={() => scrollTo("voices")} href="#voices">導入事例</a>
+          <a className="nav-link" onClick={() => scrollTo("area")} href="#area">対応エリア</a>
           <a className="nav-link" onClick={() => scrollTo("steps")} href="#steps">導入の流れ</a>
           <a className="nav-link" onClick={() => scrollTo("faq")} href="#faq">よくある質問</a>
           <a className="nav-link" onClick={() => scrollTo("contact")} href="#contact">お問い合わせ</a>
