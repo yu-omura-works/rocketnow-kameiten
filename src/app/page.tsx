@@ -16,10 +16,16 @@ export default function RocketNowLP() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [showCta, setShowCta] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 400);
+      const contact = document.getElementById('contact');
+      if (contact) {
+        const rect = contact.getBoundingClientRect();
+        setShowCta(rect.top > window.innerHeight);
+      }
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -1239,10 +1245,12 @@ export default function RocketNowLP() {
       ><span style={{display:'inline-block',transform:'rotate(-45deg)'}}>🚀</span></button>
 
       {/* FLOATING CTA (mobile only) */}
-      <div className="floating-cta">
-        <span className="floating-cta-text">🚀 無料で始める</span>
-        <a href="#contact">今すぐ資料請求</a>
-      </div>
+      {showCta && (
+        <div className="floating-cta">
+          <span className="floating-cta-text">🚀 無料で始める</span>
+          <a href="#contact">今すぐ資料請求</a>
+        </div>
+      )}
     </>
   );
 }
