@@ -105,23 +105,42 @@ export default function RocketNowLP() {
     },
   ];
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScPhC9auH82ebpEVohu_nnTuhic0LfpeUbWoMc-nfmf5rP9ww/formResponse';
-    const body = new URLSearchParams({
+    const iframe = document.createElement('iframe');
+    iframe.name = 'hidden_iframe';
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+
+    const form = document.createElement('form');
+    form.action = formUrl;
+    form.method = 'POST';
+    form.target = 'hidden_iframe';
+
+    const fields: Record<string, string> = {
       'entry.747627057': formData.storeName,
       'entry.457246524': formData.contactName,
       'entry.1472117229': formData.phone,
       'entry.147044858': formData.email,
       'entry.251191479': formData.category,
       'entry.1558271817': formData.message,
+    };
+
+    Object.entries(fields).forEach(([name, value]) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = name;
+      input.value = value;
+      form.appendChild(input);
     });
-    await fetch(formUrl, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: body.toString(),
-    });
+
+    document.body.appendChild(form);
+    form.submit();
+    setTimeout(() => {
+      document.body.removeChild(form);
+      document.body.removeChild(iframe);
+    }, 3000);
     setSubmitted(true);
   };
 
