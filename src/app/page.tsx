@@ -105,8 +105,23 @@ export default function RocketNowLP() {
     },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScPhC9auH82ebpEVohu_nnTuhic0LfpeUbWoMc-nfmf5rP9ww/formResponse';
+    const body = new URLSearchParams({
+      'entry.747627057': formData.storeName,
+      'entry.457246524': formData.contactName,
+      'entry.1472117229': formData.phone,
+      'entry.147044858': formData.email,
+      'entry.251191479': formData.category,
+      'entry.1558271817': formData.message,
+    });
+    await fetch(formUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString(),
+    });
     setSubmitted(true);
   };
 
