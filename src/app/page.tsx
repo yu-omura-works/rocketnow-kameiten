@@ -58,7 +58,11 @@ export default function RocketNowLP() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      history.replaceState(null, '', ' ');
+    }
     setMenuOpen(false);
   };
 
@@ -757,11 +761,11 @@ export default function RocketNowLP() {
           </div>
         </div>
         <nav className={`nav-bar${menuOpen ? " open" : ""}`}>
-          <a className="nav-link" onClick={() => scrollTo("reasons")} href="#reasons">選ばれる理由</a>
-          <a className="nav-link" onClick={() => scrollTo("voices")} href="#voices">導入事例</a>
-          <a className="nav-link" onClick={() => scrollTo("area")} href="#area">対応エリア</a>
-          <a className="nav-link" onClick={() => scrollTo("steps")} href="#steps">導入の流れ</a>
-          <a className="nav-link" onClick={() => scrollTo("faq")} href="#faq">よくある質問</a>
+          <a className="nav-link" onClick={() => scrollTo("reasons")} href="#">選ばれる理由</a>
+          <a className="nav-link" onClick={() => scrollTo("voices")} href="#">導入事例</a>
+          <a className="nav-link" onClick={() => scrollTo("area")} href="#">対応エリア</a>
+          <a className="nav-link" onClick={() => scrollTo("steps")} href="#">導入の流れ</a>
+          <a className="nav-link" onClick={() => scrollTo("faq")} href="#">よくある質問</a>
           <a className="nav-link" onClick={() => scrollTo("contact")} href="#contact">お問い合わせ</a>
         </nav>
       </header>
@@ -790,7 +794,7 @@ export default function RocketNowLP() {
               <a href="#contact" className="btn-primary">
                 📋 無料で資料請求・お問い合わせ
               </a>
-              <a href="#reasons" className="btn-secondary">
+              <a href="#" className="btn-secondary">
                 詳しく見る →
               </a>
             </div>
