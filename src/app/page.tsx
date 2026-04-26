@@ -1247,8 +1247,7 @@ export default function RocketNowLP() {
       {/* FLOATING CTA (mobile only) */}
       {showCta && (
         <div className="floating-cta">
-          <span className="floating-cta-text">🚀 無料で始める</span>
-          <a href="#contact">今すぐ資料請求</a>
+          <a href="#contact">🚀 今すぐ資料請求</a>
         </div>
       )}
     </>
