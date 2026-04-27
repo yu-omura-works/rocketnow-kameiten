@@ -105,23 +105,8 @@ export default function RocketNowLP() {
     },
   ];
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbzIq4w6q7Vcx3s__Im82vIBOuTR3dPkuhZIG6H5JjROPtV-tVfOsMunji5uDA9VJHXbNw/exec';
-    const body = new URLSearchParams({
-      storeName: formData.storeName,
-      contactName: formData.contactName,
-      phone: formData.phone,
-      email: formData.email,
-      category: formData.category,
-      message: formData.message,
-    });
-    await fetch(scriptUrl, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: body.toString(),
-    });
     setSubmitted(true);
   };
 
