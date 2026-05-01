@@ -658,7 +658,7 @@ export default function RocketNowLP() {
         .form-input {
           width: 100%; border: 2px solid #ebebeb; border-radius: 12px;
           padding: 14px 16px; font-family: var(--font-noto), sans-serif;
-          font-size: 0.95rem; color: var(--dark); outline: none;
+          font-size: 1rem; color: var(--dark); outline: none;
           transition: border-color 0.2s, box-shadow 0.2s; background: #fafafa;
         }
         .form-input:focus { border-color: var(--flame); box-shadow: 0 0 0 3px rgba(255,87,34,0.12); background: white; }
