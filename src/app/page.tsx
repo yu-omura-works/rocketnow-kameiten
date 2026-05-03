@@ -111,8 +111,7 @@ export default function RocketNowLP() {
     await fetch(scriptUrl, {
       method: 'POST',
       mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify(formData),
+      body: new URLSearchParams(formData as Record<string, string>),
     });
     setSubmitted(true);
   };
