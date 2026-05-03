@@ -748,6 +748,7 @@ export default function RocketNowLP() {
       `}</style>
 
       {/* HEADER */}
+      <main>
       <header className="header">
         <div className="header-top">
           <a href="#" className="logo">
@@ -994,7 +995,7 @@ export default function RocketNowLP() {
         <div className="voice-cards">
           <div className="voice-card">
             <div className="voice-video">
-              <iframe src="https://www.youtube.com/embed/dg8BhufMBsI" allowFullScreen />
+              <iframe src="https://www.youtube.com/embed/dg8BhufMBsI" title="ロケットナウ紹介動画1" allowFullScreen />
             </div>
             <div className="voice-stars">★★★★★</div>
             <div className="voice-text">
@@ -1004,7 +1005,7 @@ export default function RocketNowLP() {
           </div>
           <div className="voice-card">
             <div className="voice-video">
-              <iframe src="https://www.youtube.com/embed/5Ko6YXDeWi4" allowFullScreen />
+              <iframe src="https://www.youtube.com/embed/5Ko6YXDeWi4" title="ロケットナウ紹介動画2" allowFullScreen />
             </div>
             <div className="voice-stars">★★★★★</div>
             <div className="voice-text">
@@ -1014,7 +1015,7 @@ export default function RocketNowLP() {
           </div>
           <div className="voice-card">
             <div className="voice-video">
-              <iframe src="https://www.youtube.com/embed/EU5vw-Tskxk" allowFullScreen />
+              <iframe src="https://www.youtube.com/embed/EU5vw-Tskxk" title="ロケットナウ紹介動画3" allowFullScreen />
             </div>
             <div className="voice-stars">★★★★★</div>
             <div className="voice-text">
@@ -1024,7 +1025,7 @@ export default function RocketNowLP() {
           </div>
           <div className="voice-card">
             <div className="voice-video">
-              <iframe src="https://www.youtube.com/embed/nBOl_08ELxA" allowFullScreen />
+              <iframe src="https://www.youtube.com/embed/nBOl_08ELxA" title="ロケットナウ紹介動画4" allowFullScreen />
             </div>
             <div className="voice-stars">★★★★★</div>
             <div className="voice-text">
@@ -1137,10 +1138,11 @@ export default function RocketNowLP() {
           ) : (
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label className="form-label">
+                <label className="form-label" htmlFor="storeName">
                   店舗名 <span>必須</span>
                 </label>
                 <input
+                  id="storeName"
                   className="form-input"
                   type="text"
                   placeholder="例：ラーメン大将 名古屋駅前店"
@@ -1150,10 +1152,11 @@ export default function RocketNowLP() {
                 />
               </div>
               <div className="form-group">
-                <label className="form-label">
+                <label className="form-label" htmlFor="contactName">
                   担当者名 <span>必須</span>
                 </label>
                 <input
+                  id="contactName"
                   className="form-input"
                   type="text"
                   placeholder="例：田中 太郎"
@@ -1163,10 +1166,11 @@ export default function RocketNowLP() {
                 />
               </div>
               <div className="form-group">
-                <label className="form-label">
+                <label className="form-label" htmlFor="phone">
                   電話番号 <span>必須</span>
                 </label>
                 <input
+                  id="phone"
                   className="form-input"
                   type="tel"
                   placeholder="例：052-XXX-XXXX"
@@ -1176,10 +1180,11 @@ export default function RocketNowLP() {
                 />
               </div>
               <div className="form-group">
-                <label className="form-label">
+                <label className="form-label" htmlFor="email">
                   メールアドレス <span style={{background:'#ddd',color:'#888',fontSize:'0.62rem',padding:'1px 6px',borderRadius:'4px',marginLeft:'6px'}}>任意</span>
                 </label>
                 <input
+                  id="email"
                   className="form-input"
                   type="email"
                   placeholder="例：info@restaurant.jp"
@@ -1188,10 +1193,11 @@ export default function RocketNowLP() {
                 />
               </div>
               <div className="form-group">
-                <label className="form-label">
+                <label className="form-label" htmlFor="category">
                   お問い合わせ種別 <span>必須</span>
                 </label>
                 <select
+                  id="category"
                   className="form-input"
                   value={formData.category}
                   onChange={(e) => setFormData({ ...formData, category: e.target.value })}
@@ -1206,10 +1212,11 @@ export default function RocketNowLP() {
                 </select>
               </div>
               <div className="form-group">
-                <label className="form-label">
+                <label className="form-label" htmlFor="message">
                   お問い合わせ内容 <span style={{background:'#ddd',color:'#888',fontSize:'0.62rem',padding:'1px 6px',borderRadius:'4px',marginLeft:'6px'}}>任意</span>
                 </label>
                 <textarea
+                  id="message"
                   className="form-input"
                   placeholder="ご質問・ご要望などをご自由にお書きください"
                   value={formData.message}
@@ -1260,6 +1267,7 @@ export default function RocketNowLP() {
           <a href="#contact">🚀 今すぐ資料請求</a>
         </div>
       )}
+      </main>
     </>
   );
 }
