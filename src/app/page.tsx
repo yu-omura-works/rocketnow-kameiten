@@ -995,7 +995,7 @@ export default function RocketNowLP() {
         <div className="voice-cards">
           <div className="voice-card">
             <div className="voice-video">
-              <iframe src="https://www.youtube.com/embed/dg8BhufMBsI" title="ロケットナウ紹介動画1" allowFullScreen />
+              <iframe src="https://www.youtube-nocookie.com/embed/dg8BhufMBsI" title="ロケットナウ紹介動画1" allowFullScreen />
             </div>
             <div className="voice-stars">★★★★★</div>
             <div className="voice-text">
@@ -1005,7 +1005,7 @@ export default function RocketNowLP() {
           </div>
           <div className="voice-card">
             <div className="voice-video">
-              <iframe src="https://www.youtube.com/embed/5Ko6YXDeWi4" title="ロケットナウ紹介動画2" allowFullScreen />
+              <iframe src="https://www.youtube-nocookie.com/embed/5Ko6YXDeWi4" title="ロケットナウ紹介動画2" allowFullScreen />
             </div>
             <div className="voice-stars">★★★★★</div>
             <div className="voice-text">
@@ -1015,7 +1015,7 @@ export default function RocketNowLP() {
           </div>
           <div className="voice-card">
             <div className="voice-video">
-              <iframe src="https://www.youtube.com/embed/EU5vw-Tskxk" title="ロケットナウ紹介動画3" allowFullScreen />
+              <iframe src="https://www.youtube-nocookie.com/embed/EU5vw-Tskxk" title="ロケットナウ紹介動画3" allowFullScreen />
             </div>
             <div className="voice-stars">★★★★★</div>
             <div className="voice-text">
@@ -1025,7 +1025,7 @@ export default function RocketNowLP() {
           </div>
           <div className="voice-card">
             <div className="voice-video">
-              <iframe src="https://www.youtube.com/embed/nBOl_08ELxA" title="ロケットナウ紹介動画4" allowFullScreen />
+              <iframe src="https://www.youtube-nocookie.com/embed/nBOl_08ELxA" title="ロケットナウ紹介動画4" allowFullScreen />
             </div>
             <div className="voice-stars">★★★★★</div>
             <div className="voice-text">
