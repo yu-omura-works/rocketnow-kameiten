@@ -107,7 +107,7 @@ export default function RocketNowLP() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbx6YBMiJw0L63Kd2JbnOaVgujaDcaDfSlMQIBPMswPBMxia5z1ztJHuZlZdgj4s3WUYBw/exec';
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbwrqLKIvJyfNgO97qLiGIreWkNoxlkqA7N9dLd9GUGrjvL1pChyY9B1RcQg6ggEak9gXg/exec';
     await fetch(scriptUrl, {
       method: 'POST',
       mode: 'no-cors',
